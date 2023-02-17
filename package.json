@@ -1,0 +1,19 @@
+{
+  "name": "charterassessment",
+  "version": "1.0.0",
+  "description": "React/Express assessment application for calculating and displaying a customers earned rewards points per transaction.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattg614/CharterAssessment.git"
+  },
+  "author": "Matt Garza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattg614/CharterAssessment/issues"
+  },
+  "homepage": "https://github.com/mattg614/CharterAssessment#readme"
+}
