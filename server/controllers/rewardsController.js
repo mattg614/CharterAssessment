@@ -92,4 +92,64 @@ rewardsController.calculatePoints = (req, res, next) => {
   })
   return next();
 }
+
+/**
+ * @name groupCustomers
+ * @description utilizes transactions on locals object and builds a new object with the 
+ * elements grouped by customer id
+ */
+rewardsController.groupCustomers = (req, res, next) => {
+  const { transactions } = res.locals;
+  const customerGroupedTransactions = {};
+  transactions.forEach(transaction => {
+    if (customerGroupedTransactions[transaction.customerId]) {
+      customerGroupedTransactions[transaction.customerId].push(
+        {
+          dateTime: transaction.dateTime,
+          transactionAmount: transaction.transactionAmount,
+          transactionPoints: transaction.transactionPoints,
+        }
+      )
+    } else {
+      customerGroupedTransactions[transaction.customerId] = [{
+        dateTime: transaction.dateTime,
+        transactionAmount: transaction.transactionAmount,
+        transactionPoints: transaction.transactionPoints,
+      }];
+    }
+  })
+  res.locals.customerGroupedTransactions = customerGroupedTransactions;
+  return next();
+}
+/**
+ * @name groupTotals
+ * @description takes the customerGroupedTransactions object and loops over each customer, then loops over each transaction and groups by Month in a seperate object, finally while 
+ * looping, totals are calculated to be returned to client 
+ */
+rewardsController.groupTotals = (req, res, next) => {
+  const { customerGroupedTransactions } = res.locals;
+  const groupedTransactions = {};
+  for (let [customerId, customerTransactions] of Object.entries(customerGroupedTransactions)) {
+    let total = 0;
+    groupedTransactions[customerId] = {};
+    customerTransactions.forEach(transaction => {
+      const monthYear = transaction.dateTime.monthYear;
+      if (groupedTransactions[customerId][monthYear] !== undefined) {
+        groupedTransactions[customerId][monthYear].transactions.push({
+          transaction
+        });
+        groupedTransactions[customerId][monthYear].monthPts += transaction.transactionPoints;
+      } else {
+        groupedTransactions[customerId][monthYear] = {
+          transactions: [
+          transaction
+        ], monthPts: transaction.transactionPoints}
+      }
+      total += transaction.transactionPoints;
+    });
+    groupedTransactions[customerId].totalPts = total;
+  }
+  res.locals.groupedTransactions = groupedTransactions;
+  return next();
+}
 module.exports = rewardsController;
