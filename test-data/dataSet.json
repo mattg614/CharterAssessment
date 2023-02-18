@@ -1,0 +1,143 @@
+{
+  "testSanitizeDS": [
+    {
+      "customer_id": 1,
+      "date_time": "02/18/2023 12:39:00 GMT-5",
+      "transaction_amount": "$120.00"
+    },
+    {
+      "customer_id": 2,
+      "date_time": "01/02/2023 15:32:00-0500",
+      "transaction_amount": "$90.00"
+    },
+    {
+      "customer_id": 2,
+      "date_time": "12/2/2022 ;lasdkf",
+      "transaction_amount": "$130.00"
+    },
+    {
+      "customer_id": 3,
+      "date_time": "12/3/2022 13:30:00 GMT-5",
+      "transaction_amount": "$90.00"
+    },
+    {
+      "customer_id": "3ae34",
+      "date_time": "12/3/2022 13:30:00 GMT-5",
+      "transaction_amount": "$90.00"
+    },
+    {
+      "customer_id": 1,
+      "date_time": "01/18/2023 16:39:00 GMT-5",
+      "transaction_amount": 40
+    },
+    {
+      "customer_id": "3",
+      "date_time": "12/24/2022 10:30:00 GMT-5",
+      "transaction_amount": 75
+    },
+    {
+      "customer_id": 2,
+      "date_time": "12/2/2022",
+      "transaction_amount": 120.0
+    },
+    {
+      "customer_id": 2,
+      "date_time": "12/2/2022",
+      "transaction_amount": "NotANumber"
+    }
+  ],
+  "testCalcPointsDS": [
+    {
+      "customerId": 1,
+      "dateTime": { "monthYear": "Feb 2023", "rawDateTime": "02/18/2023 12:39:00 GMT-5" },
+      "transactionAmount": 120
+    },
+    {
+      "customerId": 2,
+      "dateTime": { "monthYear": "Jan 2023", "rawDateTime": "01/02/2023 15:32:00-0500" },
+      "transactionAmount": 90
+    },
+    {
+      "customerId": 3,
+      "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 50
+    },
+    {
+      "customerId": 4,
+      "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 100
+    },
+    {
+      "customerId": 5,
+      "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 25
+    }
+  ],
+  "testGroupCustomersDS": [
+    {
+      "customerId": 1,
+      "dateTime": { "monthYear": "Feb 2023", "rawDateTime": "02/18/2023 12:39:00 GMT-5" },
+      "transactionAmount": 120,
+      "transactionPoints" : 90
+    },
+    {
+      "customerId": 2,
+      "dateTime": { "monthYear": "Jan 2023", "rawDateTime": "01/02/2023 15:32:00-0500" },
+      "transactionAmount": 90,
+      "transactionPoints": 40
+    },
+    {
+      "customerId": 1,
+      "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 50,
+      "transactionPoints": 0
+    },
+    {
+      "customerId": 2,
+      "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 100,
+      "transactionPoints": 50
+    },
+    {
+      "customerId": 1,
+      "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 25,
+      "transactionPoints": 0
+    }
+  ],
+  "testGroupTotalsDS" : {
+    "1" : [
+      {
+        "dateTime": { "monthYear": "Feb 2023", "rawDateTime": "02/18/2023 12:39:00 GMT-5" },
+        "transactionAmount": 120,
+        "transactionPoints": 90
+      },
+      {"dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 51,
+      "transactionPoints": 1},
+      {"dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+      "transactionAmount": 75,
+      "transactionPoints": 25}
+    ],
+    "2" : [
+      {
+        "dateTime": { "monthYear": "Jan 2023", "rawDateTime": "01/02/2023 15:32:00-0500" },
+        "transactionAmount": 90,
+        "transactionPoints": 40
+      },
+      {
+        "dateTime": { "monthYear": "Dec 2022", "rawDateTime": "12/3/2022 13:30:00 GMT-5" },
+        "transactionAmount": 100,
+        "transactionPoints": 50
+      },
+      {
+        "dateTime": { "monthYear": "Jan 2023", "rawDateTime": "01/02/2023 15:32:00-0500" },
+        "transactionAmount": 130,
+        "transactionPoints": 110
+      },
+      {"dateTime": { "monthYear": "Feb 2023", "rawDateTime": "02/18/2023 12:39:00 GMT-5" },
+        "transactionAmount": 120,
+        "transactionPoints": 90}
+    ]
+  }
+}
