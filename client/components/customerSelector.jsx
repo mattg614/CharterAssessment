@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './customerSelector.scss';
 const CustomerSelector = ({ handleSubmit, customerIds }) => {
   const options = [];
   customerIds.forEach(id => {
@@ -6,7 +7,7 @@ const CustomerSelector = ({ handleSubmit, customerIds }) => {
   });
   
   return (
-    <form onSubmit = {handleSubmit} >
+    <form className='customer-selector' onSubmit = {handleSubmit} >
       <label>Select the desired Customer Id
       <select>
         {options}

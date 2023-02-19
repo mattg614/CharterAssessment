@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
+//styles
+import styles from './mainContainer.scss'; 
 
 //components
 import FileLoader from './fileLoader';
@@ -29,13 +32,22 @@ const MainContainer = props => {
     updateSelectedCustomer(() => e.target[0].value);
     updateShowCustomerCard(() => true);
   }
+  const reset = (e) => {
+    updateRewardsData(() => { });
+    updateShowSelector(() => false);
+    updateSelectedCustomer(() => null);
+    updateShowCustomerCard(() => false);
+  }
   return (
-    <>
-      <h1>Charter Communications Rewards Portal</h1>
+    <div className='outerContainer'>
+      <div className='header'>
+        <h1>Charter Communications Rewards Portal</h1>
+        {(showSelector || showCustomerCard) && <button onClick={reset}>Load Other Data</button>}
+      </div>
       {!showSelector && <FileLoader handleSubmit={handleFileSubmit} />}
       {showSelector && <CustomerSelector handleSubmit={handleCustomerSubmit} customerIds={Object.keys(rewardsData)} />}
       {showCustomerCard && <CardsContainer rewardsData={rewardsData} selectedCustomer={selectedCustomer} />}
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,27 @@
+@import '../stylesheets/variables';
+
+.file-loader-card {
+  border: 1px solid $borderGrey;
+  border-radius: 5px;
+  background-color: $skyBlue;
+  width: 80%;
+}
+.file-form {
+  display: flex;
+  justify-content: space-between;
+  label {
+      padding: 1vh 1vw;
+      font-family: monospace;
+    }
+    input {
+      width: 65%;
+      padding: 6px 0px;
+      margin: 8px 0px;
+      overflow: scroll;
+    } 
+    button {
+      padding: 6px 4px;
+      margin: 10px;
+      font-family: monospace;
+    }
+}

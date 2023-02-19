@@ -1,0 +1,16 @@
+@import '../stylesheets/variables';
+.customer-selector {
+    border: 1px solid $borderGrey;
+    border-radius: 5px;
+    background-color: $skyBlue;
+    // width: 50%;
+    display: flex;
+    align-content: space-evenly;
+    padding: 10px;
+    label {
+      display: flex;
+      flex-direction: row;
+      align-content: space-between;
+      gap: 10px;
+    }
+}

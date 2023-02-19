@@ -1,0 +1,17 @@
+@import '../stylesheets/variables';
+
+.customer-rewards {
+  font-size: medium;
+  border: 1px solid $borderGrey;
+  background-color: $skyBlue;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  h3 {
+    font-weight: 500;
+    color: $fontGrey
+  }
+  p {
+    font-family: monospace;
+  }
+}
