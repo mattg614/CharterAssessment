@@ -4,7 +4,7 @@ const {
   testCalcPointsDS,
   testGroupCustomersDS,
   testGroupTotalsDS,
-} = require('../../test-data/dataSet.json');
+} = require('../../test-data/testDataSet.json');
 const rewardsController = require('./rewardsController');
 describe('Tests the rewardsController', () => {
   beforeEach(() => {
@@ -14,12 +14,12 @@ describe('Tests the rewardsController', () => {
 
   describe('Tests the sanitizeInputs method', () => {
     it('Takes in valid inputs with 3 invalid and returns in desired format', async () => {
-      req.body.transactions = testSanitizeDS;
+      res.locals.fileContent = { transactions: testSanitizeDS };
       const originalLength = testSanitizeDS.length;
       await rewardsController.sanitizeInputs(req, res, (err) => {
         expect(err).toBeUndefined();
         expect(res.locals.transactions).toBeDefined();
-        expect(res.locals.transactions.length).toEqual(originalLength - 3);
+        expect(res.locals.transactions.length).toEqual(originalLength - 4);
         expect(res.locals.transactions[0]).toEqual(
           expect.objectContaining({
             customerId: expect.anything(),
@@ -92,11 +92,21 @@ describe('Tests the rewardsController', () => {
         expect(err).toBeUndefined();
         expect(res.locals.groupedTransactions).toBeDefined();
         console.log(res.locals.groupedTransactions);
-        expect(res.locals.groupedTransactions['1']['Feb 2023'].monthPts).toEqual(90);
-        expect(res.locals.groupedTransactions['1']['Dec 2022'].monthPts).toEqual(26);
-        expect(res.locals.groupedTransactions['2']['Jan 2023'].monthPts).toEqual(150);
-        expect(res.locals.groupedTransactions['2']['Dec 2022'].monthPts).toEqual(50);
-        expect(res.locals.groupedTransactions['2']['Feb 2023'].monthPts).toEqual(90);
+        expect(res.locals.groupedTransactions['1'].monthTransactions['Feb 2023'].monthPts).toEqual(
+          90,
+        );
+        expect(res.locals.groupedTransactions['1'].monthTransactions['Dec 2022'].monthPts).toEqual(
+          26,
+        );
+        expect(res.locals.groupedTransactions['2'].monthTransactions['Jan 2023'].monthPts).toEqual(
+          150,
+        );
+        expect(res.locals.groupedTransactions['2'].monthTransactions['Dec 2022'].monthPts).toEqual(
+          50,
+        );
+        expect(res.locals.groupedTransactions['2'].monthTransactions['Feb 2023'].monthPts).toEqual(
+          90,
+        );
         expect(res.locals.groupedTransactions['1'].totalPts).toEqual(116);
         expect(res.locals.groupedTransactions['2'].totalPts).toEqual(290);
       });
