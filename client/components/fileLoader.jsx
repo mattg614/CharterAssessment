@@ -1,8 +1,6 @@
 import React from 'react';
 
-const FileLoader = props => {
-  const { handleSubmit } = props;
-
+const FileLoader = ({ handleSubmit }) => {
   return (
     <div className='file-loader-card'>
       <form onSubmit={handleSubmit}>
