@@ -2,15 +2,14 @@ import React from 'react';
 
 import CustomerCard from './customerCard';
 
-const cardsContainer = ({rewardsPoints}) => {
+const cardsContainer = ({rewardsData, selectedCustomer}) => {
   const customerCards = [];
-  console.log(rewardsPoints);
-  for (let [customerId, transactionData] of Object.entries(rewardsPoints)) {
+  for (let [customerId, transactionData] of Object.entries(rewardsData)) {
     customerCards.push(<CustomerCard key={customerId} customerId={customerId} transactionData={transactionData} />)
   }
   return (
     <div>
-      {customerCards}
+      <CustomerCard customerId={selectedCustomer} transactionData={rewardsData[selectedCustomer]} />
     </div>
   )
 }
