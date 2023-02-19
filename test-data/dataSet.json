@@ -44,6 +44,36 @@
       "customer_id": 2,
       "date_time": "12/2/2022",
       "transaction_amount": "NotANumber"
+    },
+    {
+      "customer_id": 3,
+      "date_time": "1/22/2023",
+      "transaction_amount": 145.0
+    },
+    {
+      "customer_id": 3,
+      "date_time": "2/2/2023",
+      "transaction_amount": 85.0
+    },
+    {
+      "customer_id": 3,
+      "date_time": "2/1/2023",
+      "transaction_amount": 45.0
+    },
+    {
+      "customer_id": 2,
+      "date_time": "2/10/2023",
+      "transaction_amount": 100.0
+    },
+    {
+      "customer_id": 2,
+      "date_time": "2/14/2023",
+      "transaction_amount": 130.0
+    },
+    {
+      "customer_id": 1,
+      "date_time": "12/30/2023",
+      "transaction_amount": 140.0
     }
   ]
 }
